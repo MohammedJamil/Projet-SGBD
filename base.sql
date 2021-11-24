@@ -19,7 +19,7 @@ create table FOURNISSEURS(
 -- ============================================================
 create table VELOS(
     NUMERO_REFERENCE number(6) primary key,
-    MODEL char(20),
+    MODEL char(30),
     DATE_MISE_SERVICE date,
     KILOMETRAGE number(6),
     ETAT char(20),

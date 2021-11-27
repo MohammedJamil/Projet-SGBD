@@ -10,11 +10,16 @@ select * from ADHERENTS;
 
 --liste des vélos par station
 
-select VELOS.*
+-- select VELOS.*
+-- from VELOS
+-- inner join STATIONS
+-- on VELOS.NUMERO_STATION = STATIONS.NUMERO_STATION
+-- group by VELOS.NUMERO_STATION;
+
+-- laisser le choix à l'utilisateur de choisir le numéro de station qu'il veut.
+select *
 from VELOS
-inner join STATIONS
-on VELOS.NUMERO_STATION = STATIONS.NUMERO_STATION
-group by NUMERO_STATION;
+--where NUMERO_STATION = XXX;
 
 --liste des vélos en cours d'utilisation
 select * 

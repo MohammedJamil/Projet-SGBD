@@ -31,13 +31,13 @@ group by NUMERO_COMMUNE;
 
 --liste des adhérents qui ont emprunté plusieurs au moins deux vélos différents pour un jour donné
 
-select ADHERENTS.* count(EMPRUNTS.NUMERO_REFERENCE)
+select ADHERENTS.*, count(EMPRUNTS.NUMERO_REFERENCE)
 from ADHERENTS
 inner join EMPRUNTS
 on ADHERENTS.NUMERO_ADHERENT=EMPRUNTS.NUMERO_EMPRUNTS
 --where DATE_DE_DEBUT=xxx  and DATE_DE_FIN=xxx
 group by NUMERO_ADHERENT;
---having count(*)>=2
+--having count(EMPRUNTS.NUMERO_REFERENCE)>=2
 
 
 -- ============================================================

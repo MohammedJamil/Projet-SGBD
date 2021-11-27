@@ -12,3 +12,8 @@ for i in range(len(fournisseurs)) :
     nb_velo = randint(10, 15)
     for j in range(nb_velo) :
         print("insert into VELOS values ({}, '{}', '{}', {}, '{}', {}, {}, {}, {})".format(i*nb_velo+j+1, models[i], dates[i%7], randint(3000, 7000), etats[i%3], prix[i], randint(10, 99), fournisseurs[i], stations[i]))
+
+for i in range(1,6):
+  for j in range(1,6):
+    if (j<i):
+      print("insert into DISTANCES values (",i,", " ,j,", ", i*6+j,")")

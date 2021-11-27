@@ -232,6 +232,15 @@ commit;
 
 --DISTANCES
 
-insert into DISTANCES values (1, 5, 7);
+insert into DISTANCES values ( 2,  1, 13 );
+insert into DISTANCES values ( 3,  1, 19 );
+insert into DISTANCES values ( 3,  2, 27 );
+insert into DISTANCES values ( 4,  1, 5 );
+insert into DISTANCES values ( 4,  2, 26 );
+insert into DISTANCES values ( 4,  3, 27 );
+insert into DISTANCES values ( 5,  1, 31 );
+insert into DISTANCES values ( 5,  2, 32 );
+insert into DISTANCES values ( 5,  3, 3 );
+insert into DISTANCES values ( 5,  4, 34 );
 
 commit;

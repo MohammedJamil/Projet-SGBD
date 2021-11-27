@@ -52,7 +52,7 @@ create table ADHERENTS(
     NOM_ADHERENT char(20),
     PRENOM_ADHERENT char(20),
     DATE_ADHESION date,
-    SOLDE number(6,1)
+    SOLDE number(6,2)
 )
 -- ============================================================
 create table COMMUNES(

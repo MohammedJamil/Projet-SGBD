@@ -75,6 +75,7 @@ commit;
 
 insert into STATIONS values (1, '73 avenue de l Amandier', 80, 1);
 
+
 commit;
 --EMPRUNTS
 

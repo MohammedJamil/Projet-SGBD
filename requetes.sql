@@ -46,4 +46,29 @@ group by NUMERO_ADHERENT;
 
 --moyenne de nombre d'usagers par vélos par jour
 
+select avg(count(NUMERO_ADHERENT))
+from EMPRUNTS
+group by NUMERO_REFERENCE,DATE_DE_DEBUT,DATE_DE_FIN;
 
+--moyenne des distances parcourues par les vélos sur une semaine
+
+select avg(DISTANCE_PARCOURUE)
+from EMPRUNTS
+group by NUMERO_REFERENCE;
+--having DATE_DE_DEBUT>=XX and DATE_DE_FIN<=YY
+
+
+
+--classement des stations par nombre de places disponibles par commune
+
+select *
+from STATIONS
+group by NUMERO_COMMUNE
+order by NB_BORNES desc;
+
+--classement des vélos les plus chargés par station
+
+select *
+from VELOS
+group by NUMERO_STATION
+order by NIVEAU_DE_BATTERIE desc;

@@ -78,7 +78,7 @@ insert into STATIONS values (1, '73 avenue de l Amandier', 80, 1);
 commit;
 --EMPRUNTS
 
-insert into EMPRUNTS values (1, '12-FEV-83', '12-FEV-83', '73 avenue de l Amandier', 5, 6, 1, 2, 3);
+insert into EMPRUNTS values (1, '12-FEV-83', '12-FEV-83', 5, 6, 1, 2, 3);
 
 commit;
 

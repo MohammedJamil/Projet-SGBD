@@ -25,7 +25,8 @@ create table VELOS(
     ETAT char(20),
     PRIX_HORAIRE number(3,1),
     NIVEAU_DE_BATTERIE number(3),
-    NUMERO_FOURNISSEUR number(3) foreign key references FOURNISSEURS(NUMERO_FOURNISSEUR)
+    NUMERO_FOURNISSEUR number(3) foreign key references FOURNISSEURS(NUMERO_FOURNISSEUR),
+    NUMERO_STATION number(4) foreign key STATIONS(NUMERO_STATION)
 )
 -- ============================================================
 create table STATIONS(
@@ -39,7 +40,6 @@ create table EMPRUNTS(
     NUMERO_EMPRUNTS number(10) primary key,
     DATE_DE_DEBUT date,
     DATE_DE_FIN date,
-    ADRESSE_STATION char(100),
     DISTANCE_PARCOURUE number(5),
     NUMERO_REFERENCE number(6) foreign key references VELOS(NUMERO_REFERENCE),
     NUMERO_STATION_DEPART number(4) foreign key references STATIONS(NUMERO_STATION),

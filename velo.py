@@ -7,11 +7,12 @@ dates = ["11-JAN-2012", "28-FEB-2014", "10-MAR-2017", "4-APR-2018", "20-MAY-2016
 etats = ["bon", "moyen", "mauvais"]
 stations = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-
+ref = 0
 for i in range(len(fournisseurs)) :
     nb_velo = randint(10, 15)
     for j in range(nb_velo) :
-        print("insert into VELOS values ({}, '{}', '{}', {}, '{}', {}, {}, {}, {})".format(i*nb_velo+j+1, models[i], dates[i%7], randint(3000, 7000), etats[i%3], prix[i], randint(10, 99), fournisseurs[i], stations[i]))
+      ref += 1 
+      print("insert into VELOS values ({}, '{}', '{}', {}, '{}', {}, {}, {}, {});".format(ref, models[i], dates[i%7], randint(3000, 7000), etats[i%3], prix[i], randint(10, 99), fournisseurs[i], stations[i]))
 
 for i in range(1,6):
   for j in range(1,6):

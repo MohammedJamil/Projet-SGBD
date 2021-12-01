@@ -10,45 +10,44 @@ select * from ADHERENTS;
 
 --liste des vélos par station
 
-select VELOS.*
+select STATIONS.NUMERO_STATION, VELOS.NUMERO_REFERENCE, VELOS.MODEL
 from VELOS
 inner join STATIONS
-on VELOS.NUMERO_STATION = STATIONS.NUMERO_STATION
-group by NUMERO_STATION;
+on VELOS.NUMERO_STATION = STATIONS.NUMERO_STATION;
 
 --liste des vélos en cours d'utilisation
-select * 
+select NUMERO_REFERENCE, MODEL
 from VELOS
-where VELOS.NUMERO_STATION is null;
+where NUMERO_STATION is null;
 
 --liste des stations dans une commune donnée
-select STATIONS.*
+select COMMUNES.NUMERO_COMMUNE, COMMUNES.NOM_COMMUNE, STATIONS.NUMERO_STATION
 from STATIONS
 inner join COMMUNES
-on STATIONS.NUMERO_COMMUNE = COMMUNES.NUMERO_COMMUNE
-group by NUMERO_COMMUNE;
---having NOM_COMMUNE='XX'
+on STATIONS.NUMERO_COMMUNE = COMMUNES.NUMERO_COMMUNE;
+--where NOM_COMMUNE='Talence';
+
 
 --liste des adhérents qui ont emprunté plusieurs au moins deux vélos différents pour un jour donné
 
-select ADHERENTS.*, count(EMPRUNTS.NUMERO_REFERENCE)
+select ADHERENTS.NUMERO_ADHERENT, ADHERENTS.NOM_ADHERENT, ADHERENTS.PRENOM_ADHERENT, count(distinct EMPRUNTS.NUMERO_REFERENCE)
 from ADHERENTS
 inner join EMPRUNTS
-on ADHERENTS.NUMERO_ADHERENT=EMPRUNTS.NUMERO_EMPRUNTS
+on ADHERENTS.NUMERO_ADHERENT=EMPRUNTS.NUMERO_ADHERENT
 --where DATE_DE_DEBUT=xxx  and DATE_DE_FIN=xxx
-group by NUMERO_ADHERENT;
---having count(EMPRUNTS.NUMERO_REFERENCE)>=2
+group by ADHERENTS.NUMERO_ADHERENT, ADHERENTS.NOM_ADHERENT, ADHERENTS.PRENOM_ADHERENT
+having count(distinct EMPRUNTS.NUMERO_REFERENCE)>=2;
 
 
 -- ============================================================
 --                  STATISTIQUES
 -- ============================================================
 
---moyenne de nombre d'usagers par vélos par jour
+--moyenne de nombre d'usagers par vélos par jour XXX
 
-select avg(count(NUMERO_ADHERENT))
+select distinct DATE_DE_DEBUT, count(distinct NUMERO_ADHERENT)/count(distinct NUMERO_REFERENCE)
 from EMPRUNTS
-group by NUMERO_REFERENCE,DATE_DE_DEBUT,DATE_DE_FIN;
+group by DATE_DE_DEBUT;
 
 --moyenne des distances parcourues par les vélos sur une semaine
 
@@ -61,14 +60,15 @@ group by NUMERO_REFERENCE;
 
 --classement des stations par nombre de places disponibles par commune
 
-select *
+select STATIONS.NUMERO_COMMUNE,NOM_COMMUNE, NUMERO_STATION, NB_BORNES
 from STATIONS
-group by NUMERO_COMMUNE
-order by NB_BORNES desc;
+inner join COMMUNES
+on COMMUNES.NUMERO_COMMUNE = STATIONS.NUMERO_COMMUNE
+order by STATIONS.NUMERO_COMMUNE asc, NB_BORNES desc;
 
 --classement des vélos les plus chargés par station
 
-select *
+select NUMERO_STATION, NUMERO_REFERENCE, NIVEAU_DE_BATTERIE
 from VELOS
-group by NUMERO_STATION
-order by NIVEAU_DE_BATTERIE desc;
+where NUMERO_STATION is not null
+order by NUMERO_STATION,NIVEAU_DE_BATTERIE desc;

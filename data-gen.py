@@ -45,7 +45,7 @@ for i in range (0, 9):
 nb_velo = 108
 nb_adh = 50
 mois = ["JAN", "FEB", "MAR", "APR", "MAI", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
-annee = [2018, 2019, 2020, 2021]
+annee = [18, 19, 20, 21]
 
 def gen_day(i):
     j = i+1
@@ -64,7 +64,10 @@ ref = 0
 for i in range(len(annee)):
     for j in range(len(mois)):
         for k in range(randint(3, 7)):
-            date = "'{}-{}-{}'".format(gen_day(j), mois[j], annee[i])
+            hour = randint(8,22)
+            minute = randint(5,59)
+            date1 = "'{}-{}-{} {}.{}'".format(gen_day(j), mois[j], annee[i],hour-randint(0,2),minute-randint(5,minute))
+            date2 = "'{}-{}-{} {}.{}'".format(gen_day(j), mois[j], annee[i],hour,minute)
             ref += 1
             rand_depart = randint(1, 10)
             rand_arrive = 0
@@ -72,4 +75,4 @@ for i in range(len(annee)):
                 rand_arrive = randint(1, 10)
                 if rand_depart != rand_arrive :
                     break
-            print("insert into EMPRUNTS values ({}, {}, {}, {}, {}, {}, {}, {});".format(ref, date, date, get_dist(rand_depart, rand_arrive), randint(1, nb_velo), rand_depart, rand_arrive, randint(1, 50)))
+            print("insert into EMPRUNTS values ({}, {}, {}, {}, {}, {}, {}, {});".format(ref, date1, date2, get_dist(rand_depart, rand_arrive), randint(1, nb_velo), rand_depart, rand_arrive, randint(1, 50)))

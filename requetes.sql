@@ -45,10 +45,11 @@ having count(distinct EMPRUNTS.NUMERO_REFERENCE)>=2;
 
 --moyenne de nombre d'usagers par vélos par jour XXX
 
-select distinct DATE_DE_DEBUT, count(distinct NUMERO_ADHERENT)/count(distinct NUMERO_REFERENCE)
-from EMPRUNTS
-group by DATE_DE_DEBUT;
-
+SELECT AVG(NB_USAGER) AS MOYENNE
+FROM (SELECT to_char(DATE_DE_DEBUT, 'DD-MMM-YY'), COUNT(distinct NUMERO_ADHERENT) AS NB_USAGER
+      FROM EMPRUNTS
+      GROUP BY DATE_DE_DEBUT
+     );
 --moyenne des distances parcourues par les vélos sur une semaine
 
 select avg(DISTANCE_PARCOURUE)

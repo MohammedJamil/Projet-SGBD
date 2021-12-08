@@ -4,9 +4,9 @@ Ce projet consiste à réaliser une base de données pour stocker et gérer les 
 
 ## Structure du dépôt
 Projet-SGBD  
-    | -  sql     : répértoire contenant nos fichiers sql.  
-    | -  src     : répértoire contenant nos fichiers .java pour établir la connexion à l'aide de JDBC et  pour l'interface.  
-    | -  rapport : répértoire qui contient le rapport.  
+    | -  sql             : répértoire contenant nos fichiers sql.  
+    | -  Application     : répértoire contenant nos fichiers .java pour établir la connexion à l'aide de JDBC et  pour l'interface.  
+    | -  rapport         : répértoire qui contient le rapport.  
     | - Makefile  
 
 ## Membres 

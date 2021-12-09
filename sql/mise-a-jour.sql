@@ -54,8 +54,7 @@ create or replace trigger DELETE_FOURNISSEUR
 before delete on FOURNISSEURS
 for each row
 begin
-  update VELOS
-  set NUMERO_FOURNISSEUR = null
+  delete VELOS
   where NUMERO_FOURNISSEUR = :old.NUMERO_FOURNISSEUR;
 end;
 /

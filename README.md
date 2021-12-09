@@ -14,7 +14,7 @@ Projet-SGBD
 - Mohammed Jamil
 - Youssef Toumi
 
-## Dependencies
+## Environnement
 Le projet a été exécuté et testé sur des machines de l'ENSEIRB-MATMECA.
 - il faut avoir Oracle Database 11g.
 - changer le username et password dans Main.java présent dans src.

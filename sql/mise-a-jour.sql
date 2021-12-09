@@ -6,6 +6,9 @@ begin
   update VELOS
   set NUMERO_STATION = :new.NUMERO_STATION_DEPART
   where NUMERO_REFERENCE = :new.NUMERO_REFERENCE;
+  update ADHERENTS
+  set SOLDE = (select SOLDE - PRIX_HORAIRE from VELOS where NUMERO_REFERENCE =:new.NUMERO_REFERENCE)
+  where NUMERO_ADHERENT = :new.NUMERO_ADHERENT;
 end;
 /
 show errors trigger AJOUT_EMPRUNT;
@@ -18,10 +21,6 @@ begin
   update VELOS
   set NUMERO_STATION = :new.NUMERO_STATION_ARRIVEE
   where NUMERO_REFERENCE = :new.NUMERO_REFERENCE;
-  update ADHERENTS
-  set SOLDE = (select SOLDE - PRIX_HORAIRE from VELOS where NUMERO_REFERENCE =:new.NUMERO_REFERENCE)
-  where NUMERO_ADHERENT = :new.NUMERO_ADHERENT
-  ;
 end;
 /
 show errors trigger UPDATE_EMPRUNT;

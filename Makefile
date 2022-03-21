@@ -17,4 +17,3 @@ main: $(APP_DIR)/*.java
 
 clean:
 	rm -rf $(HTML_DIR) $(BUILD_DIR)
-	
